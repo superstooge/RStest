@@ -12,9 +12,22 @@ export default class Looper extends React.Component {
             <div className="looper">
                 <div className="button-looper" onClick={this.setStartLoopTime.bind(this, this.props.currentTime)}>{this.props.startLoopTime ? 'start at ' + Math.round(this.props.startLoopTime) + 's' : 'Click to set start loop time'}</div>
                 <div className="button-looper" onClick={this.setEndLoopTime.bind(this, this.props.currentTime)}>{this.props.endLoopTime ? 'end at ' + Math.round(this.props.endLoopTime) + 's' : 'Click to set end loop time'}</div>&nbsp;
-                <div className="button-looper" onClick={this.toggleLoopStatus.bind(this)}>{this.props.looping ? 'Looping...' : 'Loop section'}</div>
+                <div className={this.loopingButtonStyle()} onClick={this.toggleLoopStatus.bind(this)}>{this.props.looping ? 'Looping...' : 'Loop section'}</div>
             </div>
         )
+    }
+
+    loopingButtonStyle(){
+        if (this.props.startLoopTime == null || this.props.endLoopTime == null) {
+            return 'button-looper disabled'
+        } else {
+            if (this.props.looping) {
+                return ' button-looper-looping button-looper'
+            } else {
+                return '  button-looper'
+            }
+            
+        }
     }
 
     setStartLoopTime(time){        
@@ -38,6 +51,9 @@ export default class Looper extends React.Component {
         )
     }
     toggleLoopStatus(){
+        if (this.props.startLoopTime == null || this.props.endLoopTime == null) {
+            return
+        }
         store.dispatch(
             {
                 type:"SET_LOOP_STATE",
