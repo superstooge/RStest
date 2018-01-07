@@ -15,26 +15,19 @@ export default class Progbar extends React.Component {
         }
         this.progStyle = { width: width + '%' }
     }
-    startSeek(evt) {
-        this.seeking = true;
-        evt.currentTarget.addEventListener('mousemove', this.seek.bind(this))
 
-    }
-    stopSeek(evt) {
+    seek(evt) {
         this.seeking = false;
         evt.currentTarget.removeEventListener('mousemove', this.seek.bind(this))
         let perc = (evt.clientX * 100) / document.defaultView.getComputedStyle(evt.currentTarget, null).width.split('px')[0];
         this.props.seekCallback(perc)
-    }
-
-    seek(evt) {
-        console.log('seeking');
-        let perc = (evt.clientX * 100) / document.defaultView.getComputedStyle(evt.currentTarget, null).width.split('px')[0];
         this.progStyle = { width: perc + '%' }
     }
+
+
     render() {
         return (
-            <div className="progbar" onMouseDown={this.startSeek.bind(this)}  onMouseUp={this.stopSeek.bind(this)}>
+            <div className="progbar"  onMouseUp={this.seek.bind(this)}>
                 <div className="perc" style={this.progStyle} ></div>
             </div>
         )

@@ -22,7 +22,7 @@ body {
 .chords {
     display: flex;
     position: absolute;
-    top: 480px;
+    bottom: 120px;
 }
 
 .cursor {
@@ -31,7 +31,7 @@ body {
     left: 50%;
     display: block;
     width: 2px;
-    top: 480px;
+    bottom: 120px;
     height: 40px;
     z-index: 100;
 }
@@ -39,12 +39,25 @@ body {
 .looper {
     display: flex;
 }
-
-.button-looper {
-    background-color: green;
-    height: 15px;
+.looper-wrapper {
     font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    padding: 10px;
+}
+.looper-title {
     font-size: 15px;
+    font-weight: 500;
+}
+.looper-info {
+    font-size: 10px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+.button-looper {
+    background-color:#185036;
+    height: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
     font-weight: 700;
     border-radius: 16px;
     float: left;
@@ -53,11 +66,11 @@ body {
     display: block;
     cursor: pointer;
     margin-bottom: 17px;
-    opacity:1;
+    opacity: 1;
 }
 
 .button-looper-looping{
-    background-color: red;
+    background-color:#b3711e;
 }
 
 .disabled {
@@ -68,6 +81,7 @@ body {
     display: flex;
     background-color: grey;
     height: 10px;
+    border-radius: 15px;
 }
 
 .perc {
@@ -75,4 +89,34 @@ body {
     position: relative;
     top: 0%;
     left: 0%;
+    border-radius: 15px;
+}
+
+
+.chords-display {
+    display: flex;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 31%;
+    float: right;
+    border: 1px solid #ccc;
+    padding: 2px;
+    border-radius: 16px;
+    /* position: relative;
+    top: 15px; */
+}
+.current-chord {
+    font-size: 45px;
+    font-weight: 700;
+    min-width: 30px;
+}
+.prev-chord {
+    font-size: 24px;
+    opacity: .6;
+    font-weight: 700;
+    min-width: 30px;
+    text-align: center;
+    padding-top: 13px;
 }

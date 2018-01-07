@@ -32,3 +32,12 @@ export const videoReducer = (state = {}, action) => {
 
     return state 
 }
+
+export const chordsReducer = (state={}, action) => {
+    if (action.type === "CURRENT_CHORDS") {
+        state = {...state, names:action.payload}
+    }
+    
+    
+    return state
+}
