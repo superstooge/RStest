@@ -1,0 +1,68 @@
+* {
+    box-sizing: content-box;
+}
+body {
+    background-color: black;
+}
+.chord {
+    background-color: green;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 16px;
+    float: left;
+    padding: 10px;
+    color: white;
+    display: block;
+    opacity: .6;
+    transition: opacity .3s;
+}
+
+.chords {
+    display: flex;
+    position: absolute;
+    top: 480px;
+}
+
+.cursor {
+    border-right: 2px solid white;
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 2px;
+    top: 480px;
+    height: 40px;
+    z-index: 100;
+}
+
+.looper {
+    display: flex;
+}
+
+.button-looper {
+    background-color: green;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 16px;
+    float: left;
+    padding: 10px;
+    color: white;
+    display: block;
+    cursor: pointer;
+}
+
+.progbar {
+    display: flex;
+    background-color: grey;
+    height: 10px;
+}
+
+.perc {
+    background-color: brown;
+    position: relative;
+    top: 0%;
+    left: 0%;
+}
