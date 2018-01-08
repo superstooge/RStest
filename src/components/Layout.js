@@ -1,5 +1,5 @@
 import React from "react";
-import { getSongData } from './api'
+import { getSongData } from '../utils/api'
 import { bindActioncreatores } from 'redux'
 import { connect } from 'react-redux'
 import { combineReducers } from "redux"
@@ -16,10 +16,6 @@ const allReducers = combineReducers(
 )
 
 class Layout extends React.Component {
-    constructor() {
-        super()
-
-    }
 
     componentDidMount() {
         getSongData(this.setData)

@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --content-base src --inline --hot"
+    "start": "webpack-dev-server --content-base src --inline --hot",
+    "build": "webpack --config webpack.config.js"
   },
   "main": "webpack.config.js",
   "author": "",
@@ -28,7 +29,6 @@
     "webpack-dev-server": "^1.14.1"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "poly-decomp": "^0.2.1"
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
   }
 }

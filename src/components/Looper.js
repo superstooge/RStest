@@ -3,10 +3,7 @@ import store from '../store'
 
 
 export default class Looper extends React.Component {
-    constructor() {
-        super()
 
-    }
     render() {
         return (
             <div className="looper-wrapper">

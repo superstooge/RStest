@@ -10,16 +10,15 @@ export default class Timeline extends React.Component {
         super()
         this.lastActiveChord = null
         this.chordsElements = []
-        this.style = {
-            right: '0px'
-        }
+        // this.style = {
+        //      right: '80px'
+        // }
         this.chordSum = 0
         
     }
 
     componentDidMount() {
         this.props.songdata.song.song_events.map((item) => {
-            //console.log(i.name)
             this.addChord(item)
         })
 
@@ -29,7 +28,6 @@ export default class Timeline extends React.Component {
         if (this.props.songdata.song.id != nextProps.songdata.song.id) {
             this.chordsElements = []
             nextProps.songdata.song.song_events.map((item) => {
-                //console.log(i.name)
                 this.addChord(item)
                 this.chordSum += item.duration
             })
@@ -78,29 +76,31 @@ export default class Timeline extends React.Component {
 
         let songdiv_width = document.defaultView.getComputedStyle(this.refs.timeline, null).width.split('px')[0];
         let chord_width = chord.duration * pixelsPerSec
-        let speed = (songdiv_width / this.chordSum)
+        //let speed = (songdiv_width / this.chordSum)
+        let speed = (songdiv_width / this.props.song_duration)
 
         //let speed = (chord_width / chord.duration)
         // duration : (window.innerWidth / 2) = time : X
 
         let chordPosition = chord.DOMelement.offsetLeft
         let offsetLeft = -songdiv_width + window.innerWidth / 2 + chordPosition
-        return offsetLeft + (speed * (time - chord.beat_time)) + 'px'
+        // return offsetLeft + (speed * (time - chord.beat_time)) + 'px'
+
+        // return -songdiv_width + window.innerWidth / 2 + (speed * time) - 80 + 'px'
+        return window.innerWidth / 2  - (speed * time) + 80 + 'px'
+
+        // return (-songdiv_width + window.innerWidth / 2) + (time * 200) + 'px'
     }
 
 
     moveTimeline(time) {
-        // console.log(this.chordSum, this.props.song_duration);
-
-        //console.log(this.chordsElements[this.searchChord(time)]);
-
         let perc = (time * 100 / this.props.song_duration)
-        //console.log(offset)
         let chordIndex = this.searchChord(time)
-        let chord = this.chordsElements[chordIndex]
-        if (chord === -1) {
+        if (chordIndex === -1) {
             return
         }
+        let chord = this.chordsElements[chordIndex]
+
 
         if (this.lastActiveChord != null) {
             this.lastActiveChord.style.opacity = .6
@@ -109,12 +109,8 @@ export default class Timeline extends React.Component {
             chord.DOMelement.style.opacity = 1
             this.lastActiveChord = chord.DOMelement
         }
-        //console.log(this.refs[chord].DOMelement.offsetLeft)
-        this.style = {
-            right: this.computeChordsBarPosition(chord, time)
-        }
 
-        this.refs.timeline.style.right = this.computeChordsBarPosition(chord, time)
+        this.refs.timeline.style.transform = 'translate3d('+this.computeChordsBarPosition(chord, time) + ', 0, 0)'
         let current_chords = this.getThreeChords(chordIndex)
         if (current_chords.join('') !== previous_chords) {
             store.dispatch(
@@ -149,7 +145,7 @@ export default class Timeline extends React.Component {
     render() {
 
         return (
-            <div className="chords" ref="timeline" style={this.style}>
+            <div className="chords" ref="timeline" >
                 {this.chordsElements.map(
                     (chord, i) => {
                         return <div className="chord" key={i} ref={(el) => { this.chordsElements[i].DOMelement = el }} style={chord.style}>{chord.name}</div>

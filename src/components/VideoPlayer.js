@@ -12,12 +12,16 @@ const opts = {
 };
 var player, playinterval
 export default class VideoPlayer extends React.Component {
-    constructor() {
-        super()
-    }
+
     componentWillUpdate(nextProps, nextState) {
         if (nextProps.seekTo !== this.props.seekTo) {
             player.seekTo(this.percentageToMs(nextProps.seekTo))
+            store.dispatch(
+                {
+                    type: "VIDEO_PLAYING_TIME",
+                    payload: this.percentageToMs(nextProps.seekTo)
+                }
+            )
         }
     }
     percentageToMs(perc){        
