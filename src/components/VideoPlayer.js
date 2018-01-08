@@ -6,8 +6,8 @@ const opts = {
     width: '100%',
     playerVars: { // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
-        controls:0,
-        rel:0
+        controls: 0,
+        rel: 0
     }
 };
 var player, playinterval
@@ -24,11 +24,13 @@ export default class VideoPlayer extends React.Component {
             )
         }
     }
-    percentageToMs(perc){        
-        let time = (player.getDuration()/100) * perc
+
+    percentageToMs(perc) {
+        let time = (player.getDuration() / 100) * perc
         //console.log(perc, '%', time);
         return time
     }
+
     render() {
         return (
             <div id="player">
@@ -51,15 +53,13 @@ export default class VideoPlayer extends React.Component {
             }
         )
         let state = store.getState()
-        
+
         if (state.looper.looping && state.looper.startTime && state.looper.endTime) {
             if (time > state.looper.endTime || time < state.looper.startTime) {
                 player.seekTo(state.looper.startTime)
             }
         }
     }
-
-
 
     _onStateChange(evt) {
         // console.log(evt.data);
@@ -68,14 +68,9 @@ export default class VideoPlayer extends React.Component {
         } else if (playinterval) {
             clearInterval(playinterval)
         }
-
-
     }
 
     _onReady(event) {
-        // access to player in all event handlers via event.target
         player = event.target
-        //event.target.playVideo();
-
     }
 }

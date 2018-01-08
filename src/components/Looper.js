@@ -41,6 +41,7 @@ export default class Looper extends React.Component {
             }
         )
     }
+    
     setEndLoopTime(time) {
         if (this.props.startLoopTime && this.props.startLoopTime > time) {
             return
@@ -52,6 +53,7 @@ export default class Looper extends React.Component {
             }
         )
     }
+
     toggleLoopStatus() {
         if (this.props.startLoopTime == null || this.props.endLoopTime == null) {
             return

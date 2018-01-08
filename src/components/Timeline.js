@@ -14,7 +14,7 @@ export default class Timeline extends React.Component {
         //      right: '80px'
         // }
         this.chordSum = 0
-        
+
     }
 
     componentDidMount() {
@@ -73,23 +73,12 @@ export default class Timeline extends React.Component {
     }
 
     computeChordsBarPosition(chord, time) {
-
         let songdiv_width = document.defaultView.getComputedStyle(this.refs.timeline, null).width.split('px')[0];
         let chord_width = chord.duration * pixelsPerSec
-        //let speed = (songdiv_width / this.chordSum)
         let speed = (songdiv_width / this.props.song_duration)
-
-        //let speed = (chord_width / chord.duration)
-        // duration : (window.innerWidth / 2) = time : X
-
         let chordPosition = chord.DOMelement.offsetLeft
         let offsetLeft = -songdiv_width + window.innerWidth / 2 + chordPosition
-        // return offsetLeft + (speed * (time - chord.beat_time)) + 'px'
-
-        // return -songdiv_width + window.innerWidth / 2 + (speed * time) - 80 + 'px'
-        return window.innerWidth / 2  - (speed * time) + 80 + 'px'
-
-        // return (-songdiv_width + window.innerWidth / 2) + (time * 200) + 'px'
+        return window.innerWidth / 2 - (speed * time) + 80 + 'px'
     }
 
 
@@ -110,7 +99,7 @@ export default class Timeline extends React.Component {
             this.lastActiveChord = chord.DOMelement
         }
 
-        this.refs.timeline.style.transform = 'translate3d('+this.computeChordsBarPosition(chord, time) + ', 0, 0)'
+        this.refs.timeline.style.transform = 'translate3d(' + this.computeChordsBarPosition(chord, time) + ', 0, 0)'
         let current_chords = this.getThreeChords(chordIndex)
         if (current_chords.join('') !== previous_chords) {
             store.dispatch(
@@ -120,7 +109,7 @@ export default class Timeline extends React.Component {
                 }
             )
             previous_chords = current_chords.join('')
-        } 
+        }
 
     }
 
@@ -143,7 +132,6 @@ export default class Timeline extends React.Component {
     }
 
     render() {
-
         return (
             <div className="chords" ref="timeline" >
                 {this.chordsElements.map(
@@ -153,8 +141,5 @@ export default class Timeline extends React.Component {
                 )}
             </div>
         )
-
-
-
     }
 }

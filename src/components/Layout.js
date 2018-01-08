@@ -6,14 +6,11 @@ import { combineReducers } from "redux"
 import { songDataReducer, videoReducer, looperReducer, chordsReducer } from '../reducers'
 import VideoPlayer from './VideoPlayer'
 import Timeline from './Timeline'
-import store from '../store'
 import Looper from './Looper'
 import Progbar from './Progbar'
 import Chords from './Chords'
+import store from '../store'
 
-const allReducers = combineReducers(
-    [songDataReducer, videoReducer, looperReducer, chordsReducer]
-)
 
 class Layout extends React.Component {
 
@@ -51,7 +48,6 @@ class Layout extends React.Component {
                 payload: perc
             }
         )
-        
     }
 
 
@@ -69,4 +65,4 @@ function mapStateToProps(state) {
 
 }
 
-export default connect(mapStateToProps, allReducers)(Layout)
+export default connect(mapStateToProps)(Layout)
