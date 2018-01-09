@@ -31,7 +31,7 @@ export default class Looper extends React.Component {
 
     setStartLoopTime(time) {
         if (this.props.endLoopTime && this.props.endLoopTime < time) {
-            return
+            setEndLoopTimeAction(null)
         }
         setStartLoopTimeAction(time)
     }
