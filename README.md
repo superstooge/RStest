@@ -7,7 +7,7 @@
     "babel-preset-es2015": "^6.3.13"
     "babel-preset-react": "^6.24.1"
     "express": "^4.16.2"
-    "node-cmd": "^3.0.0"
+    "node-fetch": "^1.7.3"
     "react": "^0.14.6"
     "react-dom": "^0.14.6"
     "react-redux": "^5.0.6"
