@@ -121,12 +121,14 @@ export default class Timeline extends React.Component {
 
     render() {
         return (
-            <div className="chords" ref="timeline" >
-                {this.chordsElements.map(
-                    (chord, i) => {
-                        return <div className="chord" key={i} ref={(el) => { this.chordsElements[i].DOMelement = el }} style={chord.style}><span className="chord-name">{chord.name}</span></div>
-                    }
-                )}
+            <div className="timeline-wrapper">
+                <div className="chords" ref="timeline" >
+                    {this.chordsElements.map(
+                        (chord, i) => {
+                            return <div className="chord" key={i} ref={(el) => { this.chordsElements[i].DOMelement = el }} style={chord.style}><span className="chord-name">{chord.name}</span></div>
+                        }
+                    )}
+                </div>
             </div>
         )
     }

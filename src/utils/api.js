@@ -19,6 +19,7 @@ export function getSongData(videoId, cb) {
     .catch(
         (error) => {
             console.log('Error fetching song data!', error);
+            cb('There was an error fetching song data. Make sure the server is up and running [npm run server]')
         }
     )
 }

@@ -45,3 +45,11 @@ export const chordsReducer = (state = {}, action) => {
 
     return state
 }
+
+export const messageReducer = (state = {}, action) => {
+    if (action.type === "SHOW_MESSAGE") {
+        state = { ...state, text: action.payload }
+    }
+
+    return state
+}

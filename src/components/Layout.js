@@ -8,8 +8,9 @@ import Timeline from './Timeline'
 import Looper from './Looper'
 import Progbar from './Progbar'
 import Chords from './Chords'
-import { setNewSongAction, seekVideoAction } from '../actions'
+import { setNewSongAction, seekVideoAction, showMessageAction } from '../actions'
 import PlayPause from './PlayPause'
+import Alert from './Alert'
 
 class Layout extends React.Component {
 
@@ -19,7 +20,11 @@ class Layout extends React.Component {
     }
 
     setData(data) {
-        setNewSongAction(data)
+        if (typeof data === 'string') {
+            showMessageAction(data)
+        } else {
+            setNewSongAction(data)
+        }
     }
 
     render() {
@@ -34,6 +39,7 @@ class Layout extends React.Component {
                 </div>
                 <Progbar tot={this.props.songdata.song.duration} prog={this.props.currentVideoTime} seekCallback={this.seekVideo} />
                 <div className="cursor"></div>
+                <Alert message={this.props.message} />
             </div>
         )
     }
@@ -51,7 +57,8 @@ function mapStateToProps(state) {
         currentVideoTime: state.video.currentTime,
         looper: state.looper,
         current_chords: state.current_chords.names,
-        playStatus:state.video.playStatus
+        playStatus:state.video.playStatus,
+        message: state.message.text
     }
 
 }

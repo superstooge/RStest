@@ -72,3 +72,11 @@ export const videoPlayingTimeAction = (mseconds) => {
     )
 }
 
+export const showMessageAction = (msg) => {
+    store.dispatch(
+        {
+            type: "SHOW_MESSAGE",
+            payload: msg
+        }
+    )
+}

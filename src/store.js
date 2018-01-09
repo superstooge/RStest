@@ -1,13 +1,14 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux'
-import { songDataReducer, videoReducer, looperReducer, chordsReducer } from './reducers'
+import { songDataReducer, videoReducer, looperReducer, chordsReducer, messageReducer } from './reducers'
 
 const allReducers = combineReducers(
     {
         songdata: songDataReducer,
         video: videoReducer,
         looper: looperReducer,
-        current_chords: chordsReducer
+        current_chords: chordsReducer,
+        message: messageReducer
     }
 )
 const store = createStore(
@@ -31,6 +32,9 @@ const store = createStore(
         },
         current_chords: {
             names: ['', '', '']
+        },
+        message:{
+            text:''
         }
     }
 );

@@ -1,5 +1,5 @@
 import React from 'react'
-import {setStartLoopTimeAction, setEndLoopTimeAction, toggleLoopStatusAction} from '../actions'
+import { setStartLoopTimeAction, setEndLoopTimeAction, toggleLoopStatusAction, showMessageAction } from '../actions'
 
 export default class Looper extends React.Component {
 
@@ -32,6 +32,7 @@ export default class Looper extends React.Component {
     setStartLoopTime(time) {
         if (this.props.endLoopTime && this.props.endLoopTime < time) {
             setEndLoopTimeAction(null)
+            showMessageAction('Loop start time can not be past the end time. Loop end time has been reset.')
         }
         setStartLoopTimeAction(time)
     }
