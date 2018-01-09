@@ -23,8 +23,8 @@
   ## installation and start ##
   1. clone the repo and enter the `RStest` directory
   2. `npm install`
-  3. open two terminal windows and launch the following commands
-        1. `nom run server`   (first window)
+  3. open two terminal windows and launch the following commands:
+        1. `npm run server`   (first window)
         2. `npm start`        (second window)
   4. navigate to `http://localhost:9000`
 
@@ -34,7 +34,8 @@
 * The root component is `Layout.js`
 * The `videoId` variable can be set in `store.js`, to load a different song
 * In order to avoid the cross-origin limitations calling the riffstation api, a minimal Express app is running as proxy server. The `npm run server` command starts the proxy and fetches the api data, upon request of the frontend.
-The request template url is `http://localhost:3001/data/<video_id>`
+* The request template url is `http://localhost:3001/data/<video_id>`
+* RiffStation endpoint is `https://play.riffstation.com/api/mir/songs?source=youtube&source_id=<video_id>`
 
 ## Features ##
 * Custom playback controls
