@@ -29,7 +29,8 @@
   4. navigate to `http://localhost:9000`
 
 
-#### note on the riffstation api call ####
-In order to avoid the cross-origin error calling the riffstation api, a minimal Express app is running, as proxy server.
-The `npm run server` command starts the proxy and cURLs the api upon request of the frontend.
-The request template is `http://localhost:3001/data/<video_id>`
+## App overview ##
+* The frontent application is built with ReactJS and Redux.
+* The main frontend application component is `Layout.js`.
+* In order to avoid the cross-origin limitations calling the riffstation api, a minimal Express app is running as proxy server. The `npm run server` command starts the proxy and fetches the api data, upon request of the frontend.
+The request template url is `http://localhost:3001/data/<video_id>`
