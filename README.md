@@ -34,3 +34,6 @@
 * The main frontend application component is `Layout.js`.
 * In order to avoid the cross-origin limitations calling the riffstation api, a minimal Express app is running as proxy server. The `npm run server` command starts the proxy and fetches the api data, upon request of the frontend.
 The request template url is `http://localhost:3001/data/<video_id>`
+
+## Features ##
+The frontend application features custom playback controls, a chords timeline and a panel showing the current chord, previous and next one. Additionally, it is possible to loop a specific section of the song, by setting start/end time for the loop and 
