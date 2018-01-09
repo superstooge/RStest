@@ -30,6 +30,10 @@ export const videoReducer = (state = {}, action) => {
         state = { ...state, seekTo: action.payload }
     }
 
+    if (action.type === "PLAY_STATUS") {
+        state = { ...state, playStatus: action.payload }
+    }
+
     return state
 }
 

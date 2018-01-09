@@ -9,6 +9,7 @@ import Looper from './Looper'
 import Progbar from './Progbar'
 import Chords from './Chords'
 import { setNewSongAction, seekVideoAction } from '../actions'
+import PlayPause from './PlayPause'
 
 class Layout extends React.Component {
 
@@ -25,9 +26,12 @@ class Layout extends React.Component {
         return (
             <div>
                 <Timeline songdata={this.props.songdata} currentTime={this.props.currentVideoTime} song_duration={this.props.songdata.song.duration} />
-                <VideoPlayer videoId={this.props.video.videoId} seekTo={this.props.video.seekTo} />
-                <Chords current_chords={this.props.current_chords} />
-                <Looper currentTime={this.props.currentVideoTime} startLoopTime={this.props.looper.startTime} endLoopTime={this.props.looper.endTime} looping={this.props.looper.looping} />
+                <VideoPlayer playStatus={this.props.playStatus}  videoId={this.props.video.videoId} seekTo={this.props.video.seekTo} />
+                <div className="dashboard" >
+                    <Chords current_chords={this.props.current_chords} />
+                    <PlayPause playStatus={this.props.playStatus} />
+                    <Looper currentTime={this.props.currentVideoTime} startLoopTime={this.props.looper.startTime} endLoopTime={this.props.looper.endTime} looping={this.props.looper.looping} />
+                </div>
                 <Progbar tot={this.props.songdata.song.duration} prog={this.props.currentVideoTime} seekCallback={this.seekVideo} />
                 <div className="cursor"></div>
             </div>
@@ -46,7 +50,8 @@ function mapStateToProps(state) {
         songdata: state.songdata,
         currentVideoTime: state.video.currentTime,
         looper: state.looper,
-        current_chords: state.current_chords.names
+        current_chords: state.current_chords.names,
+        playStatus:state.video.playStatus
     }
 
 }

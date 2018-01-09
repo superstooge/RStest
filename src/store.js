@@ -16,7 +16,8 @@ const store = createStore(
         video: {
             videoId: 'oKsxPW6i3pM',
             currentTime: 0,
-            seekTo: 0
+            seekTo: 0,
+            playStatus:0
         },
         songdata: {
             song: {

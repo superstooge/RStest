@@ -54,6 +54,15 @@ export const seekVideoAction = (percentage) => {
     )
 }
 
+export const playStatusAction = (status) => {
+    store.dispatch(
+        {
+            type: "PLAY_STATUS",
+            payload: status
+        }
+    )
+}
+
 export const videoPlayingTimeAction = (mseconds) => {
     store.dispatch(
         {

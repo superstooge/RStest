@@ -120,3 +120,21 @@ body {
     text-align: center;
     padding-top: 13px;
 }
+
+.playpause {
+    display: flex;
+    width: 50px;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+.playpause img {
+    max-height: 50px;
+}
+
+.dashboard {
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+}
