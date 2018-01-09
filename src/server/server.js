@@ -14,9 +14,9 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-app.get('/data/:videoId', async ({ params: { videoId } }, res) => {
+app.get('/data/:videoId', async (req, res) => {
   try {
-    const response = await fetch(`https://play.riffstation.com/api/mir/songs?source=youtube&source_id=${videoId}`);
+    const response = await fetch(`https://play.riffstation.com/api/mir/songs?source=youtube&source_id=${req.params.videoId}`);
     const song = await response.json();
     res.send(song);
   } catch (e) {
