@@ -2,15 +2,13 @@ import React from "react";
 import { getSongData } from '../utils/api'
 import { bindActioncreatores } from 'redux'
 import { connect } from 'react-redux'
-import { combineReducers } from "redux"
 import { songDataReducer, videoReducer, looperReducer, chordsReducer } from '../reducers'
 import VideoPlayer from './VideoPlayer'
 import Timeline from './Timeline'
 import Looper from './Looper'
 import Progbar from './Progbar'
 import Chords from './Chords'
-import store from '../store'
-
+import { setNewSongAction, seekVideoAction } from '../actions'
 
 class Layout extends React.Component {
 
@@ -20,37 +18,25 @@ class Layout extends React.Component {
     }
 
     setData(data) {
-        store.dispatch(
-            {
-                type: "NEW_SONG",
-                payload: data
-            }
-        )
+        setNewSongAction(data)
     }
-    render() {
 
+    render() {
         return (
             <div>
                 <Timeline songdata={this.props.songdata} currentTime={this.props.currentVideoTime} song_duration={this.props.songdata.song.duration} />
                 <VideoPlayer videoId={this.props.video.videoId} seekTo={this.props.video.seekTo} />
                 <Chords current_chords={this.props.current_chords} />
-                <Looper currentTime={this.props.currentVideoTime}  startLoopTime={this.props.looper.startTime} endLoopTime={this.props.looper.endTime} looping={this.props.looper.looping} />
+                <Looper currentTime={this.props.currentVideoTime} startLoopTime={this.props.looper.startTime} endLoopTime={this.props.looper.endTime} looping={this.props.looper.looping} />
                 <Progbar tot={this.props.songdata.song.duration} prog={this.props.currentVideoTime} seekCallback={this.seekVideo} />
                 <div className="cursor"></div>
             </div>
         )
     }
 
-    seekVideo(perc){
-        store.dispatch(
-            {
-                type: "SEEK_VIDEO",
-                payload: perc
-            }
-        )
+    seekVideo(perc) {
+        seekVideoAction(perc)
     }
-
-
 
 }
 

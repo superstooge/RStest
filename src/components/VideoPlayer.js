@@ -1,6 +1,8 @@
 import React from 'react'
 import YouTube from 'react-youtube'
 import store from '../store'
+import {toggleLoopStatusAction, videoPlayingTimeAction} from '../actions'
+
 const opts = {
     height: '390',
     width: '100%',
@@ -16,12 +18,8 @@ export default class VideoPlayer extends React.Component {
     componentWillUpdate(nextProps, nextState) {
         if (nextProps.seekTo !== this.props.seekTo) {
             player.seekTo(this.percentageToMs(nextProps.seekTo))
-            store.dispatch(
-                {
-                    type: "VIDEO_PLAYING_TIME",
-                    payload: this.percentageToMs(nextProps.seekTo)
-                }
-            )
+            toggleLoopStatusAction(false)
+            videoPlayingTimeAction(this.percentageToMs(nextProps.seekTo))
         }
     }
 
@@ -46,12 +44,7 @@ export default class VideoPlayer extends React.Component {
 
     enterFrame() {
         let time = player.getCurrentTime()
-        store.dispatch(
-            {
-                type: "VIDEO_PLAYING_TIME",
-                payload: time
-            }
-        )
+        videoPlayingTimeAction(time)
         let state = store.getState()
 
         if (state.looper.looping && state.looper.startTime && state.looper.endTime) {

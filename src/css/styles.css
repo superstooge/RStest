@@ -22,7 +22,7 @@ body {
 .chords {
     display: flex;
     position: absolute;
-    bottom: 120px;
+    top: 520px;
 }
 
 .cursor {
@@ -31,7 +31,7 @@ body {
     left: 50%;
     display: block;
     width: 2px;
-    bottom: 120px;
+    top: 520px;
     height: 40px;
     z-index: 100;
 }

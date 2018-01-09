@@ -1,5 +1,5 @@
 import React from 'react'
-import store from '../store'
+import { currentChordsAction } from '../actions'
 
 var pixelsPerSec = 200
 var previous_chords = ''
@@ -10,9 +10,6 @@ export default class Timeline extends React.Component {
         super()
         this.lastActiveChord = null
         this.chordsElements = []
-        // this.style = {
-        //      right: '80px'
-        // }
         this.chordSum = 0
 
     }
@@ -102,12 +99,7 @@ export default class Timeline extends React.Component {
         this.refs.timeline.style.transform = 'translate3d(' + this.computeChordsBarPosition(chord, time) + ', 0, 0)'
         let current_chords = this.getThreeChords(chordIndex)
         if (current_chords.join('') !== previous_chords) {
-            store.dispatch(
-                {
-                    type: "CURRENT_CHORDS",
-                    payload: current_chords
-                }
-            )
+            currentChordsAction(current_chords)
             previous_chords = current_chords.join('')
         }
 
