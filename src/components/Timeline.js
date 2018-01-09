@@ -10,8 +10,6 @@ export default class Timeline extends React.Component {
         super()
         this.lastActiveChord = null
         this.chordsElements = []
-        this.chordSum = 0
-
     }
 
     componentDidMount() {
@@ -26,7 +24,6 @@ export default class Timeline extends React.Component {
             this.chordsElements = []
             nextProps.songdata.song.song_events.map((item) => {
                 this.addChord(item)
-                this.chordSum += item.duration
             })
         }
         if (nextProps.currentTime > 0) {
@@ -70,10 +67,8 @@ export default class Timeline extends React.Component {
     }
 
     computeChordsBarPosition(chord, time) {
-        let songdiv_width = document.defaultView.getComputedStyle(this.refs.timeline, null).width.split('px')[0];
+        //let songdiv_width = document.defaultView.getComputedStyle(this.refs.timeline, null).width.split('px')[0];
         let chord_width = chord.duration * pixelsPerSec
-        // let speed = (songdiv_width / this.props.song_duration)
-        // console.log('speed', speed);
         let chordPosition = chord.DOMelement.offsetLeft
         let offsetLeft = window.innerWidth / 2 - chordPosition
         return offsetLeft - (pixelsPerSec * (time - chord.beat_time)) + 'px'
