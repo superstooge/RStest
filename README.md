@@ -30,6 +30,7 @@
 
 
 ## App overview ##
+* NodeJS version: 8.9.1
 * The frontent application is built with ReactJS and Redux
 * The root component is `Layout.js`
 * The `videoId` variable can be set in `store.js`, to load a different song
