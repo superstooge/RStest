@@ -60,7 +60,7 @@ export default class VideoPlayer extends React.Component {
     }
 
     _onStateChange(evt) {
-         console.log(evt.data);
+        //console.log(evt.data);
         if (evt.data == 1) {
             playinterval = setInterval(this.enterFrame, 10)
         } else if (playinterval) {

@@ -35,8 +35,5 @@ const store = createStore(
     }
 );
 
-// store.subscribe(
-//     () => {
-//     }
-// )
+
 export default store

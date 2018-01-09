@@ -82,10 +82,10 @@ export default class Timeline extends React.Component {
     moveTimeline(time) {
         let perc = (time * 100 / this.props.song_duration)
         let chordIndex = this.searchChord(time)
-        if (chordIndex === -1) {
+        let chord = this.chordsElements[chordIndex]
+        if (chordIndex === -1 || !chord.DOMelement) {
             return
         }
-        let chord = this.chordsElements[chordIndex]
 
 
         if (this.lastActiveChord != null) {

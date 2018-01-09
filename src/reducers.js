@@ -13,7 +13,7 @@ export const looperReducer = (state = {}, action) => {
         state = { ...state, endTime: action.payload }
     }
     if (action.type === "SET_LOOP_STATE") {
-        state = { ...state, looping: !state.looping }
+        state = { ...state, looping: action.payload }
     }
 
     return state
