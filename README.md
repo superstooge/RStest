@@ -21,10 +21,10 @@
   
   
   ## installation and start ##
-  1. clone the repo and enter the RStest directory
-  2. npm install
+  1. clone the repo and enter the `RStest` directory
+  2. `npm install`
   3. open two terminal windows and launch the following commands
-        1. nom run server   (first window)
-        2. npm start        (second window)
-  4. navigate to http://localhost:9000
+        1. `nom run server`   (first window)
+        2. `npm start`        (second window)
+  4. navigate to `http://localhost:9000`
 
