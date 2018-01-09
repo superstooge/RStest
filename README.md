@@ -20,10 +20,10 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0"
   
   
-  ## installation ##
+  ## installation and start ##
   1. clone the repo
   2. npm install
   3. open two terminal windows and launch the following commands
-        1. nom run server
-        2. npm start
+        1. nom run server   (first window)
+        2. npm start        (second window)
   4. navigate to http://localhost:9000
