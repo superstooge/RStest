@@ -1,7 +1,7 @@
 import React from 'react'
 import YouTube from 'react-youtube'
 import store from '../store'
-import {toggleLoopStatusAction, videoPlayingTimeAction, playStatusAction} from '../actions'
+import { toggleLoopStatusAction, videoPlayingTimeAction, playStatusAction } from '../actions'
 
 const opts = {
     height: '390',
@@ -23,7 +23,7 @@ export default class VideoPlayer extends React.Component {
         }
         if (nextProps.playStatus !== this.props.playStatus && nextProps.playStatus === 2) {
             player.pauseVideo()
-        } else if (nextProps.playStatus !== this.props.playStatus && nextProps.playStatus === 1){
+        } else if (nextProps.playStatus !== this.props.playStatus && nextProps.playStatus === 1) {
             player.playVideo()
         }
     }

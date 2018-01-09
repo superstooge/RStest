@@ -31,7 +31,7 @@ class Layout extends React.Component {
         return (
             <div>
                 <Timeline songdata={this.props.songdata} currentTime={this.props.currentVideoTime} song_duration={this.props.songdata.song.duration} />
-                <VideoPlayer playStatus={this.props.playStatus}  videoId={this.props.video.videoId} seekTo={this.props.video.seekTo} />
+                <VideoPlayer playStatus={this.props.playStatus} videoId={this.props.video.videoId} seekTo={this.props.video.seekTo} />
                 <div className="dashboard" >
                     <Chords current_chords={this.props.current_chords} />
                     <PlayPause playStatus={this.props.playStatus} />
@@ -57,7 +57,7 @@ function mapStateToProps(state) {
         currentVideoTime: state.video.currentTime,
         looper: state.looper,
         current_chords: state.current_chords.names,
-        playStatus:state.video.playStatus,
+        playStatus: state.video.playStatus,
         message: state.message.text
     }
 

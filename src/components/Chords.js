@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default class Looper extends React.Component {
-    
-    render(){
+
+    render() {
         return (
             <div className="chords-display">
                 <div className='prev-chord'>{this.props.current_chords[0]}</div>

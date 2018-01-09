@@ -10,7 +10,7 @@ export default class PlayPause extends React.Component {
         }
     }
 
-    togglePlayStatus(){
+    togglePlayStatus() {
         playStatusAction(this.props.playStatus === 1 ? 2 : 1)
     }
 
