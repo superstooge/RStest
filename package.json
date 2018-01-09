@@ -1,5 +1,5 @@
 {
-  "name": "imagetriangulation",
+  "name": "RiffStationTest",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -9,7 +9,7 @@
     "build": "webpack --config webpack.config.js"
   },
   "main": "webpack.config.js",
-  "author": "",
+  "author": "Federico Carbone",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.17.0",
