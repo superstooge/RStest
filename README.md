@@ -31,13 +31,13 @@
 
 ## App overview ##
 * The frontent application is built with ReactJS and Redux
-* The main frontend application component is `Layout.js`
-* The `videoId` variable can be set in the `store.js` file, to load a different song
+* The root component is `Layout.js`
+* The `videoId` variable can be set in `store.js`, to load a different song
 * In order to avoid the cross-origin limitations calling the riffstation api, a minimal Express app is running as proxy server. The `npm run server` command starts the proxy and fetches the api data, upon request of the frontend.
 The request template url is `http://localhost:3001/data/<video_id>`
 
 ## Features ##
 * Custom playback controls
 * Chords timeline
-* Current/previous/next chordpanel
-* Loop panel: it is possible to loop a specific section of the song, by setting start/end time for the loop
+* Current/previous/next chord panel
+* Loop panel: it is possible to loop a specific section of the song, by setting start/end time
