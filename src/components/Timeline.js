@@ -1,7 +1,7 @@
 import React from 'react'
 import { currentChordsAction } from '../actions'
 
-var pixelsPerSec = 200
+var pixelsPerSec = 100
 var previous_chords = ''
 export default class Timeline extends React.Component {
 
@@ -72,10 +72,11 @@ export default class Timeline extends React.Component {
     computeChordsBarPosition(chord, time) {
         let songdiv_width = document.defaultView.getComputedStyle(this.refs.timeline, null).width.split('px')[0];
         let chord_width = chord.duration * pixelsPerSec
-        let speed = (songdiv_width / this.props.song_duration)
+        // let speed = (songdiv_width / this.props.song_duration)
+        // console.log('speed', speed);
         let chordPosition = chord.DOMelement.offsetLeft
-        let offsetLeft = -songdiv_width + window.innerWidth / 2 + chordPosition
-        return window.innerWidth / 2 - (speed * time) + 80 + 'px'
+        let offsetLeft = window.innerWidth / 2 - chordPosition
+        return offsetLeft - (pixelsPerSec * (time - chord.beat_time)) + 'px'
     }
 
 
@@ -128,7 +129,7 @@ export default class Timeline extends React.Component {
             <div className="chords" ref="timeline" >
                 {this.chordsElements.map(
                     (chord, i) => {
-                        return <div className="chord" key={i} ref={(el) => { this.chordsElements[i].DOMelement = el }} style={chord.style}>{chord.name}</div>
+                        return <div className="chord" key={i} ref={(el) => { this.chordsElements[i].DOMelement = el }} style={chord.style}><span className="chord-name">{chord.name}</span></div>
                     }
                 )}
             </div>

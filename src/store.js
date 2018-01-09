@@ -14,7 +14,7 @@ const store = createStore(
     allReducers,
     {
         video: {
-            videoId: 'oKsxPW6i3pM',
+            videoId: 's88r_q7oufE',
             currentTime: 0,
             seekTo: 0,
             playStatus:0

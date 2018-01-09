@@ -14,7 +14,7 @@ import PlayPause from './PlayPause'
 class Layout extends React.Component {
 
     componentDidMount() {
-        getSongData(this.setData)
+        getSongData(this.props.video.videoId, this.setData)
 
     }
 

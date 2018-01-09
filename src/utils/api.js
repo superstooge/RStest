@@ -1,4 +1,4 @@
-export function getSongData(cb) {
+export function getSongData(videoId, cb) {
     function status(response) {
         if (response.ok) {
             return Promise.resolve(response)
@@ -11,7 +11,7 @@ export function getSongData(cb) {
         return response.json()
     }
 
-    fetch('http://localhost:3001/data/oKsxPW6i3pM')
+    fetch('http://localhost:3001/data/'+videoId)
     //fetch('../data/songjson.json')
     .then(status)
     .then(json)
